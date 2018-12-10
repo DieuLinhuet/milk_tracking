@@ -48,7 +48,7 @@
                       @foreach($samples as $sample)
                       <tr>
                         <td>{{$sample->_id}}</td>
-                        <td>21/02/2018 14:02:00</td>
+                        <td>{{ substr($sample->createAt,0,10)}} {{substr($sample->createAt,11,8)}}</td>
                         <td>
                           <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => 'laymau']) }}">Xem chi tiết</a>
                         </td>

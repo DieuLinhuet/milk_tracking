@@ -23,8 +23,16 @@ class MyController extends Controller
 	   	return view('welcome', ['isLogin'=>$isLogin]);
 	}
 
-	public function sample_report(){
-	    return view('sample_report');
+	public function sample_report($recordId){
+		$response = $this->client->request('GET', '/api/v1/records/'.$recordId);
+
+		if($response->getStatusCode() == 200){
+			$r = json_decode($response->getBody());
+		    if($r->success){
+		    	$sample = $r->payload;
+		    }
+		}
+	    return view('sample_report', ['sample'=> $sample]);
 	}
 
 	public function gRegister(Request $rq){

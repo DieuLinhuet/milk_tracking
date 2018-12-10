@@ -54,51 +54,51 @@
                   <div class="col-sm-6">
                     <h3>Kết quả kiểm tra ban đầu:</h3>
                     <ul>
-                      <li>Hàm lượng chất béo: </li> <!-- truyen gia tri vao li qua bien -->
-                      <li>Hàm lượng protein: </li>
-                      <li>Nhiệt độ đóng băng: </li>
-                      <li>Lượng chất khô: </li>
-                      <li>Tỷ trọng: </li>
+                      <li>Hàm lượng chất béo: {{ $sample->ThongSoLayMau->HamLuongChatBeo }}</li>
+                      <li>Hàm lượng protein: {{ $sample->ThongSoLayMau->HamLuongProtein }}</li>
+                      <li>Nhiệt độ đóng băng: {{ $sample->ThongSoLayMau->NhietDoDongBang }}</li>
+                      <li>Lượng chất khô: {{ $sample->ThongSoLayMau->LuongChatKho }}</li>
+                      <li>Tỷ trọng: {{ $sample->ThongSoLayMau->TyTrong }}</li>
                     </ul>
                     <br>
                     <h3>Kết quả giai đoạn chuẩn hóa:</h3>
                     <ul>
-                      <li>Khối lượng sữa: </li>
-                      <li>Khối lượng cream: </li>
-                      <li>Khối lượng sữa cần sản xuất: </li>
-                      <li>Lượng cream cần sản xuất: </li>
-                      <li>Lượng chất béo cần bổ sung: </li>
-                      <li>Lượng sữa gầy cần bổ sung: </li>
+                      <li>Khối lượng sữa: {{ $sample->ThongSoChuanHoa->KhoiLuongSua }}</li>
+                      <li>Khối lượng cream: {{ $sample->ThongSoChuanHoa->KhoiLuongCream }}</li>
+                      <li>Khối lượng sữa cần sản xuất: {{ $sample->ThongSoChuanHoa->KhoiLuongSuaCanSx }}</li>
+                      <li>Lượng cream cần sản xuất: {{ $sample->ThongSoChuanHoa->KhoiLuongCreamCanSx }} </li>
+                      <li>Lượng chất béo cần bổ sung: {{ $sample->ThongSoChuanHoa->LuongChatBeoBoSung }}</li>
+                      <li>Lượng sữa gầy cần bổ sung: {{ $sample->ThongSoChuanHoa->LuongSuaGayBoSung }}</li>
                     </ul>
                     <br>
                     <h3>Kết quả giai đoạn đồng hóa:</h3>
                     <ul>
-                      <li>Nhiệt độ đồng hóa: </li>
-                      <li>Áp suất đồng hóa: </li>
-                      <li>Chất nhũ hóa được sử dụng: </li>
-                      <li>Hàm lượng casein: </li>
-                      <li>Kích thước hạt kem: </li>
-                      <li>Thời gian ly tâm: </li>
+                      <li>Nhiệt độ đồng hóa: {{ $sample->ThongSoDongHoa->NhietDo }}</li>
+                      <li>Áp suất đồng hóa: {{ $sample->ThongSoDongHoa->ApSuat }}</li>
+                      <li>Chất nhũ hóa được sử dụng: {{ $sample->ThongSoDongHoa->ChatNhuHoa }}</li>
+                      <li>Hàm lượng casein: {{ $sample->ThongSoDongHoa->HamLuongCasein }}</li>
+                      <li>Kích thước hạt kem: {{ $sample->ThongSoDongHoa->KichThuocHatKem }}</li>
+                      <li>Thời gian ly tâm: {{ $sample->ThongSoDongHoa->ThoiGianLytam }}</li>
                     </ul>
                   </div>
                   <div class="col-sm-6">
                     <h3>Kết quả giai đoạn thanh trùng:</h3>
                     <ul>
-                      <li>Tổng hàm lượng chất khô: </li>
-                      <li>Hàm lượng béo: </li>
-                      <li>Hàm lượng protein: </li>
-                      <li>Mẫu thử phosphatase: </li>
-                      <li>Coliform: </li>
-                      <li>Salmonella: </li>
+                      <li>Tổng hàm lượng chất khô: {{ $sample->ThongSoThanhTrung->TongHamLuongChatKho }}</li>
+                      <li>Hàm lượng béo: {{ $sample->ThongSoThanhTrung->HamLuongBeo }}</li>
+                      <li>Hàm lượng protein: {{ $sample->ThongSoThanhTrung->HamLuongBeo }}</li>
+                      <li>Mẫu thử phosphatase: {{ $sample->ThongSoThanhTrung->MauThuPhosphatase }}</li>
+                      <li>Coliform: {{ $sample->ThongSoThanhTrung->Coliform }}</li>
+                      <li>Salmonella: {{ $sample->ThongSoThanhTrung->Salmonella }}</li>
                     </ul>
                     <br>
                     <h3>Kết quả giai đoạn cô đặc làm nguội:</h3>
                     <ul>
-                      <li>Nhiệt độ làm lạnh: </li>
-                      <li>Thời gian làm lạnh: </li>
-                      <li>Tỷ lệ mầm lactose: </li>
-                      <li>Nồng độ chất béo: </li>
-                      <li>Nồng độ chất khô: </li>
+                      <li>Nhiệt độ làm lạnh: {{ $sample->ThongSoCoDac->NhietDoLamLanh }}</li>
+                      <li>Thời gian làm lạnh: {{ $sample->ThongSoCoDac->ThoiGianLamLanh }}</li>
+                      <li>Tỷ lệ mầm lactose: {{ $sample->ThongSoCoDac->Lactose }}</li>
+                      <li>Nồng độ chất béo: {{ $sample->ThongSoCoDac->NongDoChatBeo }}</li>
+                      <li>Nồng độ chất khô: {{ $sample->ThongSoCoDac->NongDoChatKho }}</li>
                     </ul>
                   </div>
                 </div>

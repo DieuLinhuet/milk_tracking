@@ -15,7 +15,7 @@
                 <label for="sampleId"><b>ID:</b></label>
               </div>
               <div class="col-sm-6">
-                <h4 id="sampleId">111</h4>
+                <h4 id="sampleId">Bản ghi số {{$recordId}}</h4>
               </div>
             </div>
             <div class="form-group row">
