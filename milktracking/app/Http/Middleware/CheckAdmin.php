@@ -15,7 +15,7 @@ class CheckAuth
      */
     public function handle($request, Closure $next)
     {
-        if( Session::get('isLogin') && Sesssion::get('role') == 'admin'){
+        if( Session::get('isLogin') && Session::get('role') == 'admin'){
 
             return $next($request);
 

@@ -23,14 +23,17 @@ Route::middleware(['mGuest'])->group(function () {
 
 	Route::get('/login', 'MyController@gLogin')->name('login');
 
-	Route::get('/register', function(){
-	  return view('auth.register', ['isLogin'=>0,'userName'=> '']);
-	})->name('register');
+	Route::get('/register', 'MyController@gRegister')->name('register');
+
+	Route::post('/register', 'MyController@register')->name('register');
 
 });
 
 
+Route::get('/logout', 'MyController@logout')->name('logout');
+
 Route::group(['middleware' => 'mAuth'], function () {
+
 
 	Route::get('/sample/test', 'HomeController@updateSampleData')->name('sample_test');
 

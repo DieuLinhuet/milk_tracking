@@ -18,7 +18,6 @@ class MyController extends Controller
 
 	public function index(){
 	    $isLogin = Session::get('isLogin');
-	    echo $isLogin;
 	   	return view('welcome', ['isLogin'=>$isLogin]);
 	}
 
@@ -29,7 +28,7 @@ class MyController extends Controller
 	}
 
 	public function gRegister(Request $rq){
-	    return view('auth.register');
+	    return view('auth.register',['userName'=>'', 'isLogin'=>0]);
 	}
 	public function register(Request $rq){
 	    $response = $this->client->request('POST', '/api/v1/actors/register', [
@@ -37,6 +36,15 @@ class MyController extends Controller
 		]);
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
+			if($r->success){
+		    	Session::put('isLogin', true);
+		    	Session::put('id', $r->payload->_id);
+				Session::put('userName', $r->payload->username);
+		    	Session::put('role', $r->payload->role);
+		    	return redirect()->route('home');
+		    } else {
+		    	return back();
+		    }
 		}
 	}
 
@@ -55,11 +63,20 @@ class MyController extends Controller
 		    if($r->success){
 		    	Session::put('isLogin', true);
 		    	Session::put('id', $r->payload->_id);
-				Session::put('username', $r->payload->username);
+				Session::put('userName', $r->payload->username);
 		    	Session::put('role', $r->payload->role);
+		    	return redirect()->route('home');
+		    }else {
+		    	return back();
 		    }
-
 		}
+	}
+
+	public function logout(){
+		Session::flush();
+		Session::regenerate();
+		Session::put('isLogin', false);
+		return redirect()->route('/');
 	}
 
 	public function gInput(){
