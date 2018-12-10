@@ -5,9 +5,13 @@
 h1{
   text-align: center;
   margin: 20px;
+  font-weight: bold;
 }
 .container{
   background-color: white;
+}
+img{
+  width: 100%;
 }
 </style>
 @endsection
@@ -15,7 +19,7 @@ h1{
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-      <img src="images/sua-vinamilk-header.jpg" alt="header">
+      <img src="/images/sua-vinamilk-header.jpg" alt="header">
       <h1>Thông tin sữa tại nhà máy</h1>
       <div class="col-sm-10 row">
         <div class="col-sm-6">
