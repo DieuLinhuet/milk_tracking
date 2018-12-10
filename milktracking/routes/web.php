@@ -27,6 +27,16 @@ Route::get('/register', function(){
   return view('auth.register', ['isLogin'=>0,'userName'=> 'tung']);
 })->name('register');
 
-Route::get('/sample/test', 'HomeController@updateSampleTest')->name('sample_test');
+Route::get('/sample/test', 'HomeController@updateSampleData')->name('sample_test');
 
 Route::post('/sample/test', 'FormController@putSamepleTestData')->name('sample_test');
+
+Route::get('/sample/normalize', 'HomeController@updateSampleData')->name('normalize');
+
+// Route::post('/sample/normalize', 'FormController@putNormalizeData')->name('normalize');
+
+Route::get('/sample/assimilation', 'HomeController@updateSampleData')->name('assimilation');
+
+Route::get('/sample/pasteurization', 'HomeController@updateSampleData')->name('pasteurization');
+
+Route::get('/sample/concentrate', 'HomeController@updateSampleData')->name('concentrate');

@@ -54,16 +54,16 @@
                           <a href="{{ route('sample_test') }}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="#">Xem chi tiết</a>
+                          <a href="{{ route('normalize') }}">Xem chi tiết</a>
                         </td>
                         <td>
-                          <a href="#">Cập nhật</a>
+                          <a href="{{ route('assimilation') }}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="#">Cập nhật</a>
+                          <a href="{{ route('pasteurization') }}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="#">Cập nhật</a>
+                          <a href="{{ route('concentrate') }}">Cập nhật</a>
                         </td>
                         <td>0</td>
                         <td>Đã ký</td>

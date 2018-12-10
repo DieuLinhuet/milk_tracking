@@ -1,7 +1,7 @@
 <div class="col-md-8">
     <div class="card">
         <div class="card-header">
-          <h2 class="col-sm-8">Mẫu thử mới</h2>
+          <h2 class="col-sm-8">Thông số cô đặc</h2>
         </div>
         <div class="card-body">
 
@@ -16,42 +16,34 @@
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-3">
-                <label for="lipid"><b>Hàm lượng chất béo:</b></label>
+                <label for="temperatureCooling"><b>Nhiệt độ làm lạnh:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="lipid">
+                <input type="text" class="form-control" id="temperatureCooling" name="temperature">
               </div>
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-3">
-                <label for="protein"><b>Hàm lượng protein:</b></label>
+                <label for="lactose"><b>Tỷ lệ mầm lactose:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="protein">
+                <input type="text" class="form-control" id="lactose" name="lactose">
               </div>
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-3">
-                <label for="freezingTemperature"><b>Nhiệt độ đóng băng:</b></label>
+                <label for="fatConcentrate"><b>Nồng độ chất béo:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="freezingTemperature">
+                <input type="text" class="form-control" id="fatConcentrate" name="fatConcentrate">
               </div>
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-3">
-                <label for="dryMatter"><b>Lượng chất khô:</b></label>
+                <label for="dryMatterConcentrate"><b>Nồng độ chất khô:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="dryMatter">
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="offset-sm-1 col-sm-3">
-                <label for="proportion"><b>Tỷ trọng:</b></label>
-              </div>
-              <div class="col-sm-7">
-                <input type="text" class="form-control" id="proportion">
+                <input type="text" class="form-control" id="dryMatterConcentrate" name="dryMatterConcentrate">
               </div>
             </div>
             <div class="form-group">

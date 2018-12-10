@@ -32,7 +32,7 @@ class HomeController extends Controller
       return redirect()->route('login', ['userName'=>$userName, 'isLogin'=>$isLogin]);
     }
 
-    public function updateSampleTest(){
+    public function updateSampleData(){
       $userName = Session::get('userName');
       $isLogin = Session::get('isLogin');
       if ($isLogin) {
@@ -40,4 +40,6 @@ class HomeController extends Controller
       }
       return redirect()->route('login', ['userName'=>$userName, 'isLogin'=>$isLogin]);
     }
+
+
 }
