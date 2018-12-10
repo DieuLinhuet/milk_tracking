@@ -15,6 +15,7 @@ Route::get('/', 'MyController@index')->name('/');
 
 // Auth::routes();
 
+Route::get('/sample_report', 'MyController@sample_report')->name('sample_report');
 
 Route::middleware(['mGuest'])->group(function () {
 
