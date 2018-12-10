@@ -23,10 +23,8 @@ class MyController extends Controller
 	   	return view('welcome', ['isLogin'=>$isLogin]);
 	}
 
-	public function test(Request $rq){
-	    $response = $this->client->request('GET', '/test');
-	    $u = json_decode($response->getBody());
-	    echo $u->success;
+	public function sample_report(){
+	    return view('sample_report');
 	}
 
 	public function gRegister(Request $rq){
@@ -58,7 +56,8 @@ class MyController extends Controller
 	    /*$response = $this->client->request('POST', '/api/v1/login', [
     		'form_params' => $rq->all()//['username' => $rq->username, 'password' => $rq->password]
 		]);*/
-		$response = $this->client->request('GET', '/api/v1/login');
+		//$response = $this->client->request('GET', 'api/v1/actors/auth?username='.$rq->username.'&password='.$rq->password);
+		$response = $this->client->request('GET', 'api/v1/login');
 	    if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 

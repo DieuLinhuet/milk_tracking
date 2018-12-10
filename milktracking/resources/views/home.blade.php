@@ -50,22 +50,22 @@
                         <td>{{$sample->_id}}</td>
                         <td>21/02/2018 14:02:00</td>
                         <td>
-                          <a href="{{ route('getRecord', ['recordId' => $sample->_id, 'phase' => 'laymau']) }}">Xem chi tiết</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => 'laymau']) }}">Xem chi tiết</a>
                         </td>
                         <td>
-                          <a href="{{ route('getRecord', ['recordId' => $sample->_id, 'phase' => 'laymau']) }}">Cập nhật</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => 'laymau']) }}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="{{ route('getRecord', ['recordId' => $sample->_id, 'phase' => 'chuanhoa']) }}">Cập nhật</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => 'chuanhoa']) }}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="{{ route('getRecord', ['recordId' => $sample->_id, 'phase' => 'donghoa' ])}}">Cập nhật</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => 'donghoa' ])}}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="{{ route('getRecord', ['recordId' => $sample->_id, 'phase' => 'thanhtrung' ])}}">Cập nhật</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => 'thanhtrung' ])}}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="{{ route('getRecord', ['recordId' => $sample->_id, 'phase' => 'codac']) }}">Cập nhật</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => 'codac']) }}">Cập nhật</a>
                         </td>
                         <td>{{ count($sample->signatures) }}</td>
                         <td>@if(!$sample->isAproved) Chưa ký
