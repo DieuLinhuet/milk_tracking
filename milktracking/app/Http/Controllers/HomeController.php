@@ -41,5 +41,13 @@ class HomeController extends Controller
       return redirect()->route('login', ['userName'=>$userName, 'isLogin'=>$isLogin]);
     }
 
+    public function samepleReport(){
+      $userName = Session::get('userName');
+      $isLogin = Session::get('isLogin');
+      // if ($isLogin) {
+        return view('sample_report', ['userName'=>$userName, 'isLogin'=>$isLogin]);
+      // }
+      // return redirect()->route('login', ['userName'=>$userName, 'isLogin'=>$isLogin]);
+    }
 
 }

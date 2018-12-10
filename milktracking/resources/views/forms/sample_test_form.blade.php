@@ -22,7 +22,7 @@
                 <label for="lipid"><b>Hàm lượng chất béo:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="lipid" name="lipid">
+                <input type="text" class="form-control" id="lipid" name="lipid" required>
               </div>
             </div>
             <div class="form-group row">
@@ -30,7 +30,7 @@
                 <label for="protein"><b>Hàm lượng protein:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="protein" name="protein">
+                <input type="text" class="form-control" id="protein" name="protein" required>
               </div>
             </div>
             <div class="form-group row">
@@ -38,7 +38,7 @@
                 <label for="freezingTemperature"><b>Nhiệt độ đóng băng:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="freezingTemperature" name="temperature">
+                <input type="text" class="form-control" id="freezingTemperature" name="temperature" required>
               </div>
             </div>
             <div class="form-group row">
@@ -46,7 +46,7 @@
                 <label for="dryMatter"><b>Lượng chất khô:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="dryMatter" name="dryMatter">
+                <input type="text" class="form-control" id="dryMatter" name="dryMatter" required>
               </div>
             </div>
             <div class="form-group row">
@@ -54,7 +54,7 @@
                 <label for="proportion"><b>Tỷ trọng:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="proportion" name="proportion">
+                <input type="text" class="form-control" id="proportion" name="proportion" required>
               </div>
             </div>
             <div class="form-group">
