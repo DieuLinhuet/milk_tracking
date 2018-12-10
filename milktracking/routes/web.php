@@ -11,32 +11,54 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('/');
+Route::get('/', 'MyController@index')->name('/');
 
 // Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/login', 'Auth\LoginController@checkLogin')->name('login');
+Route::middleware(['mGuest'])->group(function () {
 
-Route::get('/login', 'Auth\LoginController@getLogin')->name('login');
+	Route::post('/login', 'MyController@login')->name('login');
 
-Route::get('/register', function(){
-  return view('auth.register', ['isLogin'=>0,'userName'=> 'tung']);
-})->name('register');
+	Route::get('/login', 'MyController@gLogin')->name('login');
 
-Route::get('/sample/test', 'HomeController@updateSampleData')->name('sample_test');
+	Route::get('/register', function(){
+	  return view('auth.register', ['isLogin'=>0,'userName'=> '']);
+	})->name('register');
 
-Route::post('/sample/test', 'FormController@putSamepleTestData')->name('sample_test');
+});
 
-Route::get('/sample/normalize', 'HomeController@updateSampleData')->name('normalize');
 
-// Route::post('/sample/normalize', 'FormController@putNormalizeData')->name('normalize');
+Route::group(['middleware' => 'mAuth'], function () {
 
-Route::get('/sample/assimilation', 'HomeController@updateSampleData')->name('assimilation');
+	Route::get('/sample/test', 'HomeController@updateSampleData')->name('sample_test');
 
-Route::get('/sample/pasteurization', 'HomeController@updateSampleData')->name('pasteurization');
+	Route::post('/sample/test', 'FormController@putSamepleTestData')->name('sample_test');
 
-Route::get('/sample/concentrate', 'HomeController@updateSampleData')->name('concentrate');
+	Route::get('/sample/normalize', 'HomeController@updateSampleData')->name('normalize');
+
+	// Route::post('/sample/normalize', 'FormController@putNormalizeData')->name('normalize');
+
+	Route::get('/sample/assimilation', 'HomeController@updateSampleData')->name('assimilation');
+
+	Route::get('/sample/pasteurization', 'HomeController@updateSampleData')->name('pasteurization');
+
+	Route::get('/sample/concentrate', 'HomeController@updateSampleData')->name('concentrate');
+
+	Route::get('/records', 'MyController@getAllRecords');
+
+	Route::get('/records/{recordId}', 'MyController@getRecord');
+
+	Route::get('/records/{recordId}/{phase}', 'MyController@gInput');
+
+    Route::post('/records/{recordId}/{phase}', 'MyController@input');
+});
+
+Route::group(['middleware' => 'admin'], function () {
+
+	Route::get('/sign', 'MyController@gSign');
+
+	Route::post('/sign/{recordId}', 'MyController@sign');
+
+});
