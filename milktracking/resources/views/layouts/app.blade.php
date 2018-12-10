@@ -50,7 +50,7 @@
                                   <a class="dropdown-item" href="{{ route('login') }}"
                                      onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
-                                      {{ __('Logout') }}
+                                      {{ __('Thoát') }}
                                   </a>
 
                                   <form id="logout-form" action="{{ route('login') }}" method="get" style="display: none;">
@@ -61,13 +61,13 @@
                         @else
                           @if(Request::url() == url('/register'))
                           <li class="nav-item">
-                              <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                              <a class="nav-link" href="{{ route('login') }}">{{ __('Đăng nhập') }}</a>
                           </li>
 
                           @else
                           @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href=" {{ route('register') }} ">{{ __('Register') }}</a>
+                                <a class="nav-link" href=" {{ route('register') }} ">{{ __('Đăng ký') }}</a>
                             </li>
                           @endif
                           @endif

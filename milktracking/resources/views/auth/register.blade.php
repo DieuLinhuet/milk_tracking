@@ -12,10 +12,10 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Họ tên') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
@@ -26,21 +26,15 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="userName" class="col-md-4 col-form-label text-md-right">{{ __('Tên đăng nhập') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="userName" type="text" class="form-control" name="userName" value="" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Mật khẩu') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -52,19 +46,36 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Vai trò') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                              <select class="form-control" name="role">
+                                <option value="admin">Admin</option>
+                                <option value="employee">Nhân viên</option>
+                              </select>
+                                <!-- <input id="role" type="text" class="form-control" name="role" value="" required> -->
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control" name="address" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="privateKey" class="col-md-4 col-form-label text-md-right">{{ __('Private Key') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="privateKey" type="text" class="form-control" name="privateKey" value="" required>
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Đăng ký') }}
                                 </button>
                             </div>
                         </div>
