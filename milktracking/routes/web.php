@@ -15,7 +15,6 @@ Route::get('/', 'MyController@index')->name('/');
 
 // Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['mGuest'])->group(function () {
 
@@ -34,7 +33,8 @@ Route::get('/logout', 'MyController@logout')->name('logout');
 
 Route::group(['middleware' => 'mAuth'], function () {
 
-
+	//Route::get('/home', 'HomeController@index')->name('home');
+/*
 	Route::get('/sample/test', 'HomeController@updateSampleData')->name('sample_test');
 
 	Route::post('/sample/test', 'FormController@putSamepleTestData')->name('sample_test');
@@ -47,15 +47,18 @@ Route::group(['middleware' => 'mAuth'], function () {
 
 	Route::get('/sample/pasteurization', 'HomeController@updateSampleData')->name('pasteurization');
 
-	Route::get('/sample/concentrate', 'HomeController@updateSampleData')->name('concentrate');
+	Route::get('/sample/concentrate', 'HomeController@updateSampleData')->name('concentrate');*/
 
 	Route::get('/records', 'MyController@getAllRecords');
 
 	Route::get('/records/{recordId}', 'MyController@getRecord');
 
-	Route::get('/records/{recordId}/{phase}', 'MyController@gInput');
+	Route::get('/records/{recordId}/{phase}', 'MyController@gInput')->name('putRecord');
 
-    Route::post('/records/{recordId}/{phase}', 'MyController@input');
+    Route::post('/records/{recordId}/{phase}', 'MyController@input')->name('putRecord');
+
+    Route::get('/home', 'MyController@home')->name('home');
+
 });
 
 Route::group(['middleware' => 'admin'], function () {

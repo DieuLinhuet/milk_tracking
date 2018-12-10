@@ -8,12 +8,14 @@ use Session;
 class MyController extends Controller
 {
 	private $client;
+	private $userName;
+	private $isLogin;
 
 	public function __construct(){
 		$this->client = new Client(['base_uri' => 'http://localhost:8080/',
 							'timeout'  => 5.0]);
-		$userName = Session::get('userName');
-      	$isLogin = Session::get('isLogin');
+		$this->userName = Session::get('userName');
+      	$this->isLogin = Session::get('isLogin');
 	}
 
 	public function index(){
@@ -79,8 +81,22 @@ class MyController extends Controller
 		return redirect()->route('/');
 	}
 
-	public function gInput(){
-		//return view('welcome');
+	public function gInput($recordId, $phase){
+		$userName = Session::get('userName');
+		$isLogin = Session::get('isLogin');
+		$response = $this->client->request('GET', '/api/v1/records/'.$recordId);
+		if($response->getStatusCode() == 200){
+			$r = json_decode($response->getBody());
+		    if($r->success){
+		    	if($phase == 'laymau') $v = 'forms/sample_test_form';
+		    	else if($phase == 'chuanhoa') $v = 'forms/normalize_form';
+		    	else if($phase == 'donghoa') $v = 'forms/assimilation_form';
+		    	else if($phase == 'thanhtrung') $v = 'forms/pasteurization_form';
+		    	else if($phase == 'codac') $v = 'forms/concentrate_form';
+		    	return view($v, ['userName'=>$userName, 'isLogin'=>$isLogin, 'sample'=>$r->payload, 'recordId'=>$recordId,'phase'=> $phase]);
+		    }
+		}
+
 	}
 
 	public function input(Request $rq, $recordId, $phase){
@@ -92,7 +108,7 @@ class MyController extends Controller
 	    if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
-
+		    	echo "<script type='text/javascript'>alert('Success');</script>";
 		    }
 		}
 	}
@@ -113,6 +129,21 @@ class MyController extends Controller
 		    	
 		    }
 		}
+	}
+
+	public function home(){
+		$response = $this->client->request('GET', '/api/v1/records');
+		if($response->getStatusCode() == 200){
+			$r = json_decode($response->getBody());
+		    if($r->success){
+		    	$samples = $r->payload;
+		    }
+		} else {
+			return;
+		}
+		$userName = Session::get('userName');
+		$isLogin = Session::get('isLogin');
+		return view('home', ['userName'=>$userName, 'isLogin'=>$isLogin, 'samples'=>$samples]);
 	}
 	
 }

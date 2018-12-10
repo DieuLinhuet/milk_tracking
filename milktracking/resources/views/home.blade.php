@@ -44,57 +44,35 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>111</td>
-                        <td>20/02/2018 10:10:00</td>
-                        <td>
-                          <a href="#">Xem chi tiết</a>
-                        </td>
-                        <td>
-                          <a href="{{ route('sample_test') }}">Cập nhật</a>
-                        </td>
-                        <td>
-                          <a href="{{ route('normalize') }}">Xem chi tiết</a>
-                        </td>
-                        <td>
-                          <a href="{{ route('assimilation') }}">Cập nhật</a>
-                        </td>
-                        <td>
-                          <a href="{{ route('pasteurization') }}">Cập nhật</a>
-                        </td>
-                        <td>
-                          <a href="{{ route('concentrate') }}">Cập nhật</a>
-                        </td>
-                        <td>0</td>
-                        <td>Đã ký</td>
-                      </tr>
-
                       <!-- test -->
+                      @foreach($samples as $sample)
                       <tr>
-                        <td>112</td>
+                        <td>{{$sample->_id}}</td>
                         <td>21/02/2018 14:02:00</td>
                         <td>
-                          <a href="#">Xem chi tiết</a>
+                          <a href="{{ route('getRecord', ['recordId' => $sample->_id, 'phase' => 'laymau']) }}">Xem chi tiết</a>
                         </td>
                         <td>
-                          <a href="#">Cập nhật</a>
+                          <a href="{{ route('getRecord', ['recordId' => $sample->_id, 'phase' => 'laymau']) }}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="#">Xem chi tiết</a>
+                          <a href="{{ route('getRecord', ['recordId' => $sample->_id, 'phase' => 'chuanhoa']) }}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="#">Cập nhật</a>
+                          <a href="{{ route('getRecord', ['recordId' => $sample->_id, 'phase' => 'donghoa' ])}}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="#">Cập nhật</a>
+                          <a href="{{ route('getRecord', ['recordId' => $sample->_id, 'phase' => 'thanhtrung' ])}}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="#">Cập nhật</a>
+                          <a href="{{ route('getRecord', ['recordId' => $sample->_id, 'phase' => 'codac']) }}">Cập nhật</a>
                         </td>
-                        <td>0</td>
-                        <td>Ký</td>
+                        <td>{{ count($sample->signatures) }}</td>
+                        <td>@if(!$sample->isAproved) Chưa ký
+                            @else Đã Ký
+                            @endif</td>
                       </tr>
-
+                      @endforeach
                     </tbody>
                   </table>
 

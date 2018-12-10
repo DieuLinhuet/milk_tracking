@@ -1,3 +1,6 @@
+@extends('sample_form')
+
+@section('form')
 <div class="col-md-8">
     <div class="card">
         <div class="card-header">
@@ -5,7 +8,7 @@
         </div>
         <div class="card-body">
 
-          <form method="post" action="{{ route('sample_test') }}">
+          <form method="post" action="{{ route('putRecord',['recordId'=>$recordId, 'phase'=>$phase]) }}">
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-3">
                 <label for="sampleId"><b>ID:</b></label>
@@ -62,3 +65,4 @@
         </div>
     </div>
 </div>
+@endsection
