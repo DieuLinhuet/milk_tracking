@@ -19,7 +19,7 @@
                 <label for="temperatureCooling"><b>Nhiệt độ làm lạnh:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="temperatureCooling" name="temperature">
+                <input type="text" class="form-control" id="temperatureCooling" name="temperature" required>
               </div>
             </div>
             <div class="form-group row">
@@ -27,7 +27,7 @@
                 <label for="lactose"><b>Tỷ lệ mầm lactose:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="lactose" name="lactose">
+                <input type="text" class="form-control" id="lactose" name="lactose" required>
               </div>
             </div>
             <div class="form-group row">
@@ -43,7 +43,7 @@
                 <label for="dryMatterConcentrate"><b>Nồng độ chất khô:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="dryMatterConcentrate" name="dryMatterConcentrate">
+                <input type="text" class="form-control" id="dryMatterConcentrate" name="dryMatterConcentrate" required>
               </div>
             </div>
             <div class="form-group">

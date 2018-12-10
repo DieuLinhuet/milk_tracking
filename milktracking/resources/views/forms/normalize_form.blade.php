@@ -19,7 +19,7 @@
                 <label for="milkWeight"><b>Khối lượng sữa:</b></label>
               </div>
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="milkWeight" name="milkWeight">
+                <input type="text" class="form-control" id="milkWeight" name="milkWeight" required>
               </div>
             </div>
             <div class="form-group row">
@@ -27,7 +27,7 @@
                 <label for="creamWeight"><b>Khối lượng cream:</b></label>
               </div>
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="creamWeight" name="creamWeight">
+                <input type="text" class="form-control" id="creamWeight" name="creamWeight" required>
               </div>
             </div>
             <div class="form-group row">
@@ -35,7 +35,7 @@
                 <label for="milkWeightNeed"><b>Khối lượng sữa cần sản xuất:</b></label>
               </div>
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="milkWeightNeed" name="milkWeightNeed">
+                <input type="text" class="form-control" id="milkWeightNeed" name="milkWeightNeed" required>
               </div>
             </div>
             <div class="form-group row">
@@ -43,7 +43,7 @@
                 <label for="creamWeightNeed"><b>Lượng cream cần sản xuất:</b></label>
               </div>
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="creamWeightNeed" name="creamWeightNeed">
+                <input type="text" class="form-control" id="creamWeightNeed" name="creamWeightNeed" required>
               </div>
             </div>
             <div class="form-group row">
@@ -51,7 +51,7 @@
                 <label for="lipidAdded"><b>Lượng chất béo cần bổ sung:</b></label>
               </div>
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="lipidAdded" name="lipidAdded">
+                <input type="text" class="form-control" id="lipidAdded" name="lipidAdded" required>
               </div>
             </div>
             <div class="form-group row">
@@ -59,7 +59,7 @@
                 <label for="skimMilk"><b>Lượng sữa gầy cần bổ sung:</b></label>
               </div>
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="skimMilk" name="skimMilk">
+                <input type="text" class="form-control" id="skimMilk" name="skimMilk" required>
               </div>
             </div>
             <div class="form-group">

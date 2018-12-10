@@ -65,3 +65,5 @@ Route::group(['middleware' => 'admin'], function () {
 	Route::post('/sign/{recordId}', 'MyController@sign');
 
 });
+
+Route::get('/sample/report', 'HomeController@samepleReport')-> name('sample_report');

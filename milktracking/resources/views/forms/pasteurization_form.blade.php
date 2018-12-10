@@ -19,7 +19,7 @@
                 <label for="dryMatterWeight"><b>Tổng hàm lượng chất khô:</b></label>
               </div>
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="dryMatterWeight" name="dryMatter">
+                <input type="text" class="form-control" id="dryMatterWeight" name="dryMatter" required>
               </div>
             </div>
             <div class="form-group row">
@@ -27,7 +27,7 @@
                 <label for="lipidContent"><b>Hàm lượng béo:</b></label>
               </div>
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="lipidContent" name="lipid">
+                <input type="text" class="form-control" id="lipidContent" name="lipid" required>
               </div>
             </div>
             <div class="form-group row">
@@ -35,7 +35,7 @@
                 <label for="proteinContent"><b>Hàm lượng protein:</b></label>
               </div>
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="proteinContent" name="protein">
+                <input type="text" class="form-control" id="proteinContent" name="protein" required>
               </div>
             </div>
             <div class="form-group row">
@@ -43,7 +43,7 @@
                 <label for="phosphatase"><b>Mẫu thử phosphatase:</b></label>
               </div>
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="phosphatase" name="phosphatase">
+                <input type="text" class="form-control" id="phosphatase" name="phosphatase" required>
               </div>
             </div>
             <div class="form-group row">
@@ -51,7 +51,7 @@
                 <label for="coliform"><b>Coliform:</b></label>
               </div>
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="coliform" name="coliform">
+                <input type="text" class="form-control" id="coliform" name="coliform" required>
               </div>
             </div>
             <div class="form-group row">
@@ -59,7 +59,7 @@
                 <label for="salmonella"><b>Salmonella:</b></label>
               </div>
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="salmonella" name="salmonella">
+                <input type="text" class="form-control" id="salmonella" name="salmonella" required>
               </div>
             </div>
             <div class="form-group">
