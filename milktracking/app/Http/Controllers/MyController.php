@@ -35,6 +35,18 @@ class MyController extends Controller
 	    return view('sample_report', ['sample'=> $sample]);
 	}
 
+	public function newRecord(){
+		$id = Session::get('id');
+		$response = $this->client->request('GET', '/api/v1/records/'.$id);
+
+		if($response->getStatusCode() == 200){
+			$r = json_decode($response->getBody());
+		    if($r->success){
+		    	return redirect()->route('putRecord',['recordId'=>$r->payload->_id, 'phase'=>'1']);
+		    }
+		}
+	}
+
 	public function gRegister(Request $rq){
 	    return view('auth.register',['userName'=>'', 'isLogin'=>0]);
 	}
@@ -61,9 +73,6 @@ class MyController extends Controller
 	}
 
 	public function login(Request $rq){
-	    /*$response = $this->client->request('POST', '/api/v1/login', [
-    		'form_params' => $rq->all()//['username' => $rq->username, 'password' => $rq->password]
-		]);*/
 		//$response = $this->client->request('GET', 'api/v1/actors/auth?username='.$rq->username.'&password='.$rq->password);
 		$response = $this->client->request('GET', 'api/v1/login');
 	    if($response->getStatusCode() == 200){
@@ -95,11 +104,11 @@ class MyController extends Controller
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
-		    	if($phase == 'laymau') $v = 'forms/sample_test_form';
-		    	else if($phase == 'chuanhoa') $v = 'forms/normalize_form';
-		    	else if($phase == 'donghoa') $v = 'forms/assimilation_form';
-		    	else if($phase == 'thanhtrung') $v = 'forms/pasteurization_form';
-		    	else if($phase == 'codac') $v = 'forms/concentrate_form';
+		    	if($phase == '1') $v = 'forms/sample_test_form';
+		    	else if($phase == '2') $v = 'forms/normalize_form';
+		    	else if($phase == '3') $v = 'forms/assimilation_form';
+		    	else if($phase == '4') $v = 'forms/pasteurization_form';
+		    	else if($phase == '5') $v = 'forms/concentrate_form';
 		    	return view($v, ['userName'=>$userName, 'isLogin'=>$isLogin, 'sample'=>$r->payload, 'recordId'=>$recordId,'phase'=> $phase]);
 		    }
 		}
@@ -115,6 +124,9 @@ class MyController extends Controller
 	    if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
+		    	if($phase < 5){
+		    		redirect()->route('putRecord', ['recordId'=>$recordId, 'phase'=>$phase+1]);
+		    	}
 		    	echo "<script type='text/javascript'>alert('Success');</script>";
 		    }
 		}
@@ -126,14 +138,12 @@ class MyController extends Controller
 
 	public function sign($recordId){
 		$id = Session::get('id');
-		$response = $this->client->request('PUT', '/api/v1/actors/'.$id.'/sign/'.$recordId, [
-    		'form_params' => $rq->all()
-		]);
+		$response = $this->client->request('PUT', '/api/v1/actors/'.$id.'/sign/'.$recordId);
 
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
-		    	
+		    	return back();
 		    }
 		}
 	}

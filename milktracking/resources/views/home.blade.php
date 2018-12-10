@@ -22,7 +22,7 @@
                 <div class="card-header">
                   <div class="row">
                     <h2 class="col-sm-9">Danh sách mẫu sữa</h2>
-                    <a href="#" class="col-sm-3">
+                    <a href="{{route('newRecord')}}" class="col-sm-3">
                       <input type="button" class="btn btn-primary float-right" name="" value="Thêm mẫu thử mới">
                     </a>
                   </div>
@@ -33,7 +33,7 @@
                       <tr>
                         <th>ID</th>
                         <th>Ngày nhập</th>
-                        <th>Kiểm tra trực quan</th>
+                        <!-- <th>Kiểm tra trực quan</th> -->
                         <th>Thông số lấy mẫu</th>
                         <th>Thông số chuẩn hóa</th>
                         <th>Thông số đồng hóa</th>
@@ -41,6 +41,7 @@
                         <th>Thông số cô đặc làm nguội</th>
                         <th>Tổng số chữ ký</th>
                         <th>Trạng thái</th>
+                        <th>Chữ ký</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -49,28 +50,39 @@
                       <tr>
                         <td>{{$sample->_id}}</td>
                         <td>{{ substr($sample->createAt,0,10)}} {{substr($sample->createAt,11,8)}}</td>
+<!--                         <td>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '1']) }}">Xem chi tiết</a>
+                        </td> -->
                         <td>
-                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => 'laymau']) }}">Xem chi tiết</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '1']) }}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => 'laymau']) }}">Cập nhật</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '2']) }}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => 'chuanhoa']) }}">Cập nhật</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '3' ])}}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => 'donghoa' ])}}">Cập nhật</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '4' ])}}">Cập nhật</a>
                         </td>
                         <td>
-                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => 'thanhtrung' ])}}">Cập nhật</a>
-                        </td>
-                        <td>
-                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => 'codac']) }}">Cập nhật</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '5']) }}">Cập nhật</a>
                         </td>
                         <td>{{ count($sample->signatures) }}</td>
-                        <td>@if(!$sample->isAproved) Chưa ký
-                            @else Đã Ký
+                        <td>@if(!$sample->isAproved) Chưa được xác nhận
+                            @else Đã xác nhận
                             @endif</td>
+                        <td>
+                          <?php $signed = 0 ?>
+                          @foreach($sample->signatures as $user)
+                            @if($userName == $user->username) Đã ký 
+                            <?php $signed = 1 ?>
+                            @endif
+                          @endforeach
+                          @if($signed == 0) 
+                          <a href="{{ route('sign',['recordId'=>$sample->_id]) }}"> Ký ngay </a>
+                          @endif
+                        </td>
                       </tr>
                       @endforeach
                     </tbody>

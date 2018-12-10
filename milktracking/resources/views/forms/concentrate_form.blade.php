@@ -58,7 +58,7 @@
               </div>
             </div>
             <div style="text-align: center;">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Hoàn thành</button>
             </div>
           </form>
 

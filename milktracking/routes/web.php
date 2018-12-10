@@ -50,6 +50,8 @@ Route::group(['middleware' => 'mAuth'], function () {
 
 	Route::get('/sample/concentrate', 'HomeController@updateSampleData')->name('concentrate');*/
 
+	Route::get('/newRecord', 'MyController@newRecord')->name('newRecord');
+
 	Route::get('/records', 'MyController@getAllRecords');
 
 	Route::get('/records/{recordId}', 'MyController@getRecord');
@@ -64,8 +66,6 @@ Route::group(['middleware' => 'mAuth'], function () {
 
 Route::group(['middleware' => 'admin'], function () {
 
-	Route::get('/sign', 'MyController@gSign');
-
-	Route::post('/sign/{recordId}', 'MyController@sign');
+	Route::get('/sign/{recordId}', 'MyController@sign')->name('sign');
 
 });
