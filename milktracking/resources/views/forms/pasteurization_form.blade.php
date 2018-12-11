@@ -21,7 +21,7 @@
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-4">
-                <label for="TongHamLuongChatKho"><b>Tổng hàm lượng chất khô:</b></label>
+                <label for="TongHamLuongChatKho"><b>Tổng hàm lượng chất khô (kg):</b></label>
               </div>
               <div class="col-sm-6">
                 @if($data == null)
@@ -35,7 +35,7 @@
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-4">
-                <label for="HamLuongBeo"><b>Hàm lượng béo:</b></label>
+                <label for="HamLuongBeo"><b>Hàm lượng béo (%):</b></label>
               </div>
               <div class="col-sm-6">
                 @if($data == null)
@@ -63,7 +63,7 @@
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-4">
-                <label for="Coliform"><b>Coliform:</b></label>
+                <label for="Coliform"><b>Coliform (%):</b></label>
               </div>
               <div class="col-sm-6">
                 @if($data == null)
@@ -77,7 +77,7 @@
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-4">
-                <label for="Salmonella"><b>Salmonella:</b></label>
+                <label for="Salmonella"><b>Salmonella (%):</b></label>
               </div>
               <div class="col-sm-6">
                 @if($data == null)

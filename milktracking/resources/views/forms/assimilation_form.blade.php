@@ -20,7 +20,7 @@
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-4">
-                <label for="NhietDo"><b>Nhiệt độ đồng hóa:</b></label>
+                <label for="NhietDo"><b>Nhiệt độ đồng hóa (<sup>o</sup>C):</b></label>
               </div>
               <div class="col-sm-6">
                 @if($data == null)
@@ -34,7 +34,7 @@
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-4">
-                <label for="ApSuat"><b>Áp suất đồng hóa:</b></label>
+                <label for="ApSuat"><b>Áp suất đồng hóa (bar):</b></label>
               </div>
               <div class="col-sm-6">
                 @if($data == null)
@@ -52,17 +52,17 @@
               </div>
               <div class="col-sm-6">
                 @if($data == null)
-                <input type="number" class="form-control" id="emulsifier" name="ChatNhuHoa" required>
+                <input type="text" class="form-control" id="emulsifier" name="ChatNhuHoa" required>
                 @elseif($role == 'admin')
-                <input type="number" class="form-control" id="emulsifier" name="ChatNhuHoa" required value="{{ $data->ChatNhuHoa }}">
+                <input type="text" class="form-control" id="emulsifier" name="ChatNhuHoa" required value="{{ $data->ChatNhuHoa }}">
                 @else
-                <input type="number" class="form-control" id="emulsifier" name="ChatNhuHoa" required value="{{ $data->ChatNhuHoa }}" disabled>
+                <input type="text" class="form-control" id="emulsifier" name="ChatNhuHoa" required value="{{ $data->ChatNhuHoa }}" disabled>
                 @endif
               </div>
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-4">
-                <label for="HamLuongCasein"><b>Hàm lượng casein:</b></label>
+                <label for="HamLuongCasein"><b>Hàm lượng casein (%):</b></label>
               </div>
               <div class="col-sm-6">
                 @if($data == null)
@@ -76,7 +76,7 @@
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-4">
-                <label for="KichThuocHatKem"><b>Kích thước hạt kem:</b></label>
+                <label for="KichThuocHatKem"><b>Kích thước hạt kem (&micro;m):</b></label>
               </div>
               <div class="col-sm-6">
                 @if($data == null)
@@ -90,14 +90,14 @@
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-4">
-                <label for="ThoiGianLytam"><b>Thời gian ly tâm:</b></label>
+                <label for="ThoiGianLytam"><b>Thời gian ly tâm (ph):</b></label>
               </div>
               <div class="col-sm-6">
                 @if($data == null)
                 <input type="number" class="form-control" id="ThoiGianLytam" name="ThoiGianLytam" required>
                 @elseif($role == 'admin')
-                @else
                 <input type="number" class="form-control" id="ThoiGianLytam" name="ThoiGianLytam" required value="{{ $data->ThoiGianLytam }}">
+                @else
                 <input type="number" class="form-control" id="ThoiGianLytam" name="ThoiGianLytam" required  value="{{ $data->ThoiGianLytam }}" disabled>
                 @endif
               </div>

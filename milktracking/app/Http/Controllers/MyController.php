@@ -10,7 +10,7 @@ class MyController extends Controller
 	private $client;
 
 	public function __construct(){
-		$this->client = new Client(['base_uri' => 'https://milktrackingserve.herokuapp.com',
+		$this->client = new Client(['base_uri' => 'localhost:12345/',
 							'timeout'  => 150.0]);
 	}
 
