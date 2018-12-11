@@ -8,14 +8,10 @@ use Session;
 class MyController extends Controller
 {
 	private $client;
-	private $userName;
-	private $isLogin;
 
 	public function __construct(){
 		$this->client = new Client(['base_uri' => 'https://milktrackingserve.herokuapp.com',
-							'timeout'  => 5.0]);
-		$this->userName = Session::get('userName');
-      	$this->isLogin = Session::get('isLogin');
+							'timeout'  => 150.0]);
 	}
 
 	public function index(){
@@ -31,13 +27,25 @@ class MyController extends Controller
 		    if($r->success){
 		    	$sample = $r->payload;
 		    }
+		} else {
+			return back();
 		}
 	    return view('sample_report', ['sample'=> $sample]);
 	}
 
 	public function newRecord(){
 		$id = Session::get('id');
-		$response = $this->client->request('GET', '/api/v1/records/'.$id, ['form_params' => ['title' => 'vinamilk', 'note'=>'']]);
+		$input = array();
+		$input['title'] = 'vinamilk';
+		$input['note'] = 'vinamilk';
+		$data = json_encode($input);
+		$response = $this->client->request('POST', '/api/v1/records/'.$id, [
+	    	'headers'=>[
+	    		//'Accept' => 'application/json',
+	    		'Content-Type' => 'application/json'
+	   		 ],
+	    	'body' => $data
+	    ]);
 
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
@@ -45,6 +53,8 @@ class MyController extends Controller
 					// dd($r);
 		    	return redirect()->route('putRecord',['recordId'=>$r->payload->_id, 'phase'=>'1']);
 		    }
+		} else {
+			return back();
 		}
 	}
 
@@ -56,9 +66,20 @@ class MyController extends Controller
     // return view('auth.register',['userName'=>'', 'isLogin'=>true]);
 	}
 	public function register(Request $rq){
+		$input = array();
+		foreach($rq->all() as $key=>$val){
+			if($key != '_token')
+				$input[$key] = $val;
+		}
+		$data = json_encode($input);
+
 	    $response = $this->client->request('POST', '/api/v1/actors/register', [
-    		'form_params' => $rq->all()
-		]);
+	    	'headers'=>[
+	    		//'Accept' => 'application/json',
+	    		'Content-Type' => 'application/json'
+	   		 ],
+	    	'body' => $data
+	    ]);
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 			if($r->success){
@@ -96,6 +117,8 @@ class MyController extends Controller
 		    }else {
 		    	return back();
 		    }
+		} else {
+			return back();
 		}
 	}
 
@@ -133,6 +156,8 @@ class MyController extends Controller
 		    	return view($v, ['userName'=>$userName, 'isLogin'=>$isLogin, 'role' => $role,
 					'sample'=>$r->payload, 'recordId'=>$recordId,'phase'=> $phase, 'data'=> $data]);
 		    }
+		} else {
+			return back();
 		}
 
 	}
@@ -140,27 +165,36 @@ class MyController extends Controller
 	public function input(Request $rq, $recordId, $phase){
 		$id = Session::get('id');
 		if($phase == 1) $p = 'laymau';
-		else if($phase == 2) $p = 'chuahoa';
+		else if($phase == 2) $p = 'chuanhoa';
 		else if($phase == 3) $p = 'donghoa';
 		else if($phase == 4) $p = 'thanhtrung';
 		else if($phase == 5) $p = 'codac';
-
-/*		foreach ($rq->all() as $key => $value) {
-			echo($key.'=>'.$value);
-			echo("<hr>");
+		$input = array();
+		foreach($rq->all() as $key=>$val){
+			if($key != '_token')
+				$input[$key] = $val;
 		}
-*/
+		$data = json_encode($input);
+
 	    $response = $this->client->request('PUT', '/api/v1/records/'.$recordId.'/'.$p.'/'.$id, [
-    		'form_params' => $rq->all()
-		]);
+	    	'headers'=>[
+	    		//'Accept' => 'application/json',
+	    		'Content-Type' => 'application/json'
+	   		 ],
+	    	'body' => $data
+	    ]);
+
 	    if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
 		    	if($phase < 5){
-		    		//redirect()->route('putRecord', ['recordId'=>$recordId, 'phase'=>$phase+1]);
+		    		return redirect()->route('putRecord', ['recordId'=>$recordId, 'phase'=>$phase+1]);
+		    	} else {
+		    		return redirect()->route('home');
 		    	}
-		    	//echo "<script type='text/javascript'>alert('Success');</script>";
 		    }
+		} else {
+			return back();
 		}
 	}
 
@@ -191,7 +225,7 @@ class MyController extends Controller
 		    	$samples = $r->payload;
 		    }
 		} else {
-			return;
+			return back();
 		}
 		$userName = Session::get('userName');
 		$isLogin = Session::get('isLogin');
