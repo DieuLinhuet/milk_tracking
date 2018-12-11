@@ -9,6 +9,7 @@
         <div class="card-body">
 
           <form method="POST" action="{{ route('putRecord',['recordId'=>$recordId, 'phase'=>$phase]) }}">
+            @csrf
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-4">
                 <label for="sampleId"><b>ID:</b></label>

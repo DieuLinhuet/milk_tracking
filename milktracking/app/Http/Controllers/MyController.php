@@ -133,15 +133,25 @@ class MyController extends Controller
 
 	public function input(Request $rq, $recordId, $phase){
 		$id = Session::get('id');
+		if($phase == 1) $p = 'laymau';
+		else if($phase == 2) $p = 'chuahoa';
+		else if($phase == 3) $p = 'donghoa';
+		else if($phase == 4) $p = 'thanhtrung';
+		else if($phase == 5) $p = 'codac';
 
-	    $response = $this->client->request('PUT', '/api/v1/records/'.$recordId.$phase.$id, [
+/*		foreach ($rq->all() as $key => $value) {
+			echo($key.'=>'.$value);
+			echo("<hr>");
+		}
+*/
+	    $response = $this->client->request('PUT', '/api/v1/records/'.$recordId.'/'.$p.'/'.$id, [
     		'form_params' => $rq->all()
 		]);
 	    if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
 		    	if($phase < 5){
-		    		redirect()->route('putRecord', ['recordId'=>$recordId, 'phase'=>$phase+1]);
+		    		//redirect()->route('putRecord', ['recordId'=>$recordId, 'phase'=>$phase+1]);
 		    	}
 		    	//echo "<script type='text/javascript'>alert('Success');</script>";
 		    }
