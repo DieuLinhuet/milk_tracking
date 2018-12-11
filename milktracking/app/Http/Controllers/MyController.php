@@ -37,11 +37,12 @@ class MyController extends Controller
 
 	public function newRecord(){
 		$id = Session::get('id');
-		$response = $this->client->request('GET', '/api/v1/records/'.$id);
+		$response = $this->client->request('GET', '/api/v1/records/'.$id, ['form_params' => ['title' => 'vinamilk', 'note'=>'']]);
 
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
+					dd($r);
 		    	return redirect()->route('putRecord',['recordId'=>$r->payload->_id, 'phase'=>'1']);
 		    }
 		}
@@ -154,7 +155,7 @@ class MyController extends Controller
 	public function sign($recordId){
 		$id = Session::get('id');
 		$response = $this->client->request('PUT', '/api/v1/actors/'.$id.'/sign/'.$recordId);
-
+		dd($response);
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){

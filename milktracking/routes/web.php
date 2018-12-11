@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,5 +66,4 @@ Route::group(['middleware' => 'mAuth'], function () {
 Route::group(['middleware' => 'admin'], function () {
 
 	Route::get('/sign/{recordId}', 'MyController@sign')->name('sign');
-
 });
