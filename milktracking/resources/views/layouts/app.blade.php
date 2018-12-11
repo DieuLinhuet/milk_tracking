@@ -47,30 +47,25 @@
                               </a>
 
                               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="{{ route('register') }}"
+                                     onclick="event.preventDefault();
+                                                   document.getElementById('register-form').submit();">
+                                      {{ __('Thêm nhân viên') }}
+                                  </a>
                                   <a class="dropdown-item" href="{{ route('logout') }}"
                                      onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
                                       {{ __('Thoát') }}
                                   </a>
-
-                                  <form id="logout-form" action="{{ route('logout') }}" method="get" style="display: none;">
+                                  <form id="register-form" action="{{ route('register') }}" method="get" style="display: none;">
+                                      @csrf
+                                  </form>
+                                  <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
                                       @csrf
                                   </form>
                               </div>
                           </li>
-                        @else
-                          @if(Request::url() == url('/register'))
-                          <li class="nav-item">
-                              <a class="nav-link" href="{{ route('login') }}">{{ __('Đăng nhập') }}</a>
-                          </li>
 
-                          @else
-                          @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href=" {{ route('register') }} ">{{ __('Đăng ký') }}</a>
-                            </li>
-                          @endif
-                          @endif
                         @endif
                     </ul>
                 </div>
