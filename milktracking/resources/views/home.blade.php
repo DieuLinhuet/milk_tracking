@@ -40,7 +40,7 @@
                         <th>Thông số thanh trùng</th>
                         <th>Thông số cô đặc làm nguội</th>
                         <th>Tổng số chữ ký</th>
-                        <th>Trạng thái</th>
+                        <th>Trạng thái QR</th>
                         <th>Chữ ký</th>
                       </tr>
                     </thead>
@@ -48,7 +48,9 @@
                       <!-- test -->
                       @foreach($samples as $sample)
                       <tr>
-                        <td>{{$sample->_id}}</td>
+                        <td>
+                          {{$sample->_id}}
+                        </td>
                         <td>{{ substr($sample->createAt,0,10)}} {{substr($sample->createAt,11,8)}}</td>
 <!--                         <td>
                           <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '1']) }}">Xem chi tiết</a>
@@ -97,8 +99,12 @@
                         </td>
                         <td>{{ count($sample->signatures) }}</td>
                         <td>@if(!$sample->isApproved) Chưa được xác nhận
-                            @else Đã xác nhận
-                            @endif</td>
+                            @else 
+                          <a href="{{route('sample_report',['recordId' => $sample->_id])}}">
+                           <img src="https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl={{ route('sample_report',['recordId' => $sample->_id]) }}">
+                          </a>
+                            @endif
+                          </td>
                         <td>
                           <?php $signed = 0 ?>
                           @foreach($sample->signatures as $user)
