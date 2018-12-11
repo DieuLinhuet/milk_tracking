@@ -53,23 +53,47 @@
 <!--                         <td>
                           <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '1']) }}">Xem chi tiết</a>
                         </td> -->
+<!--                         <td>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '1']) }}">
+                            @if(is_null($sample->ThongSoLayMau))Cập nhật
+                            @else Xem chi tiết
+                            @endif
+                          </a>
+                        </td> -->
                         <td>
-                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '1']) }}">Cập nhật</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '1']) }}">
+                          @if(is_null($sample->ThongSoLayMau))Cập nhật
+                            @else Xem chi tiết
+                            @endif
+                          </a>
                         </td>
                         <td>
-                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '1']) }}">Cập nhật</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '2']) }}">
+                          @if(is_null($sample->ThongSoChuanHoa))Cập nhật
+                            @else Xem chi tiết
+                            @endif
+                          </a>
                         </td>
                         <td>
-                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '2']) }}">Cập nhật</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '3' ])}}">
+                          @if(is_null($sample->ThongSoDongHoa))Cập nhật
+                            @else Xem chi tiết
+                            @endif
+                          </a>
                         </td>
                         <td>
-                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '3' ])}}">Cập nhật</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '4' ])}}">
+                          @if(is_null($sample->ThongSoThanhTrung))Cập nhật
+                            @else Xem chi tiết
+                            @endif
+                          </a>
                         </td>
                         <td>
-                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '4' ])}}">Cập nhật</a>
-                        </td>
-                        <td>
-                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '5']) }}">Cập nhật</a>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '5']) }}">
+                          @if(is_null($sample->ThongSoCoDac))Cập nhật
+                            @else Xem chi tiết
+                            @endif
+                          </a>
                         </td>
                         <td>{{ count($sample->signatures) }}</td>
                         <td>@if(!$sample->isApproved) Chưa được xác nhận
