@@ -12,7 +12,7 @@ class MyController extends Controller
 	private $isLogin;
 
 	public function __construct(){
-		$this->client = new Client(['base_uri' => 'localhost:12345/',
+		$this->client = new Client(['base_uri' => 'https://milktrackingserve.herokuapp.com',
 							'timeout'  => 5.0]);
 		$this->userName = Session::get('userName');
       	$this->isLogin = Session::get('isLogin');
@@ -142,7 +142,7 @@ class MyController extends Controller
 		    	if($phase < 5){
 		    		redirect()->route('putRecord', ['recordId'=>$recordId, 'phase'=>$phase+1]);
 		    	}
-		    	echo "<script type='text/javascript'>alert('Success');</script>";
+		    	//echo "<script type='text/javascript'>alert('Success');</script>";
 		    }
 		}
 	}
@@ -158,6 +158,9 @@ class MyController extends Controller
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
+		    	return back();
+		    } else {
+		    	echo "<script type='text/javascript'> alert('Ký không thành công. Vui lòng thử lại.');</script>";
 		    	return back();
 		    }
 		}
