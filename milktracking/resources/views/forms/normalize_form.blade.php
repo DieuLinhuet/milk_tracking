@@ -14,7 +14,7 @@
               <div class="offset-sm-1 col-sm-5">
                 <label for="sampleId"><b>ID:</b></label>
               </div>
-              <div class="col-sm-5">
+              <div class="col-sm-6">
                 <h4 id="sampleId">{{$recordId}}</h4>
               </div>
             </div>

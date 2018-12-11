@@ -33,7 +33,6 @@
                       <tr>
                         <th>ID</th>
                         <th>Ngày nhập</th>
-                        <!-- <th>Kiểm tra trực quan</th> -->
                         <th>Thông số lấy mẫu</th>
                         <th>Thông số chuẩn hóa</th>
                         <th>Thông số đồng hóa</th>
@@ -52,16 +51,6 @@
                           {{$sample->_id}}
                         </td>
                         <td>{{ substr($sample->createAt,0,10)}} {{substr($sample->createAt,11,8)}}</td>
-<!--                         <td>
-                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '1']) }}">Xem chi tiết</a>
-                        </td> -->
-<!--                         <td>
-                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '1']) }}">
-                            @if(is_null($sample->ThongSoLayMau))Cập nhật
-                            @else Xem chi tiết
-                            @endif
-                          </a>
-                        </td> -->
                         <td>
                           <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '1']) }}">
                           @if(is_null($sample->ThongSoLayMau))Cập nhật
@@ -117,9 +106,9 @@
                             @if(!is_null($sample->ThongSoLayMau) && !is_null($sample->ThongSoChuanHoa)
                             && !is_null($sample->ThongSoDongHoa) && !is_null($sample->ThongSoThanhTrung)
                             && !is_null($sample->ThongSoCoDac))
-                            <a href="{{ route('sign',['recordId'=>$sample->_id]) }}" onClick= "return confirm('Bạn có chắc muốn ký?')"> Ký ngay </a>
+                              <a href="{{ route('sign',['recordId'=>$sample->_id]) }}" onClick= "return confirm('Bạn có chắc muốn ký?')"> Ký ngay </a>
                             @else Ký ngay
-                            @endif 
+                            @endif
                           @endif
                           @else Bạn không đủ quyền
                           @endif

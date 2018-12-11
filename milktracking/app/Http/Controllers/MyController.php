@@ -86,11 +86,6 @@ class MyController extends Controller
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 			if($r->success){
-		    	// Session::put('isLogin', true);
-		    	// Session::put('id', $r->payload->_id);
-					// Session::put('userName', $r->payload->username);
-		    	// Session::put('role', $r->payload->role);
-		    	// return redirect()->route('home');
 				Session::flash('success', 'Thêm thành công');
 				return redirect()->route('register');
 		    } else {
