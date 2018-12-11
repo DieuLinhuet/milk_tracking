@@ -97,7 +97,13 @@
               </div>
             </div>
             <div style="text-align: center;">
-              <button type="submit" class="btn btn-primary">Tiếp</button>
+              @if($data == null)
+                <button type="submit" class="btn btn-primary">Tiếp</button>
+              @elseif($sample->isApproved)
+                <button type="submit" class="btn btn-primary" disabled>Cập nhật</button>
+              @else
+                <button type="submit" class="btn btn-primary">Cập nhật</button>
+              @endif
             </div>
           </form>
 

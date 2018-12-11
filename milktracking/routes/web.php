@@ -30,22 +30,6 @@ Route::post('/logout', 'MyController@logout')->name('logout');
 
 Route::group(['middleware' => 'mAuth'], function () {
 
-	//Route::get('/home', 'HomeController@index')->name('home');
-/*
-	Route::get('/sample/test', 'HomeController@updateSampleData')->name('sample_test');
-
-	Route::post('/sample/test', 'FormController@putSamepleTestData')->name('sample_test');
-
-	Route::get('/sample/normalize', 'HomeController@updateSampleData')->name('normalize');
-
-	// Route::post('/sample/normalize', 'FormController@putNormalizeData')->name('normalize');
-
-	Route::get('/sample/assimilation', 'HomeController@updateSampleData')->name('assimilation');
-
-	Route::get('/sample/pasteurization', 'HomeController@updateSampleData')->name('pasteurization');
-
-	Route::get('/sample/concentrate', 'HomeController@updateSampleData')->name('concentrate');*/
-
 	Route::get('/newRecord', 'MyController@newRecord')->name('newRecord');
 
 	Route::get('/records', 'MyController@getAllRecords');
