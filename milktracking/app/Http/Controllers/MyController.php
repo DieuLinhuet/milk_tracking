@@ -204,8 +204,14 @@ class MyController extends Controller
 
 	public function sign($recordId){
 		$id = Session::get('id');
-		$response = $this->client->request('PUT', '/api/v1/actors/'.$id.'/sign/'.$recordId);
-		dd($response);
+
+		$response = $this->client->request('PUT', '/api/v1/actors/'.$id.'/sign/'.$recordId,  [
+	    	'headers'=>[
+	    		//'Accept' => 'application/json',
+	    		'Content-Type' => 'application/json'
+	   		 ]
+	    ]);
+
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
