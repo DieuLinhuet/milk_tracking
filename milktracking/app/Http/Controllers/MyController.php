@@ -42,6 +42,7 @@ class MyController extends Controller
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
+					dd($r);
 		    	return redirect()->route('putRecord',['recordId'=>$r->payload->_id, 'phase'=>'1']);
 		    }
 		}
