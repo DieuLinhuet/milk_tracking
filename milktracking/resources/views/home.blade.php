@@ -99,7 +99,7 @@
                         </td>
                         <td>{{ count($sample->signatures) }}</td>
                         <td>@if(!$sample->isApproved) Chưa được xác nhận
-                            @else 
+                            @else
                           <a href="{{route('sample_report',['recordId' => $sample->_id])}}">
                            <img src="https://chart.googleapis.com/chart?cht=qr&chs=120x120&chld=|0&chl={{ route('sample_report',['recordId' => $sample->_id]) }}">
                           </a>
@@ -113,7 +113,12 @@
                             @endif
                           @endforeach
                           @if($signed == 0)
-                          <a href="{{ route('sign',['recordId'=>$sample->_id]) }}" onClick= "return confirm('Bạn có chắc muốn ký?')"> Ký ngay </a>
+                            @if(!is_null($sample->ThongSoLayMau) && !is_null($sample->ThongSoChuanHoa)
+                            && !is_null($sample->ThongSoDongHoa) && !is_null($sample->ThongSoThanhTrung)
+                            && !is_null($sample->ThongSoCoDac))
+                            <a href="{{ route('sign',['recordId'=>$sample->_id]) }}" onClick= "return confirm('Bạn có chắc muốn ký?')"> Ký ngay </a>
+                            @else Ký ngay
+                            @endif 
                           @endif
                         </td>
                       </tr>
