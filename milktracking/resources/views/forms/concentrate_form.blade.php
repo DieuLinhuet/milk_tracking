@@ -24,11 +24,11 @@
               </div>
               <div class="col-sm-7">
                 @if($data == null)
-                <input type="text" class="form-control" id="NhietDoLamLanh" name="NhietDoLamLanh" required>
+                <input type="number" class="form-control" id="NhietDoLamLanh" name="NhietDoLamLanh" required>
                 @elseif($role == 'admin')
-                <input type="text" class="form-control" id="NhietDoLamLanh" name="NhietDoLamLanh" required value="{{ $data->NhietDoLamLanh }}">
+                <input type="number" class="form-control" id="NhietDoLamLanh" name="NhietDoLamLanh" required value="{{ $data->NhietDoLamLanh }}">
                 @else
-                <input type="text" class="form-control" id="NhietDoLamLanh" name="NhietDoLamLanh" required value="{{ $data->NhietDoLamLanh }}" disabled>
+                <input type="number" class="form-control" id="NhietDoLamLanh" name="NhietDoLamLanh" required value="{{ $data->NhietDoLamLanh }}" disabled>
                 @endif
               </div>
             </div>
@@ -38,11 +38,11 @@
               </div>
               <div class="col-sm-7">
                 @if($data == null)
-                <input type="text" class="form-control" id="ThoiGianLamLanh" name="ThoiGianLamLanh" required>
+                <input type="number" class="form-control" id="ThoiGianLamLanh" name="ThoiGianLamLanh" required>
                 @elseif($role == 'admin')
-                <input type="text" class="form-control" id="ThoiGianLamLanh" name="ThoiGianLamLanh" required value="{{ $data->ThoiGianLamLanh }}">
+                <input type="number" class="form-control" id="ThoiGianLamLanh" name="ThoiGianLamLanh" required value="{{ $data->ThoiGianLamLanh }}">
                 @else
-                <input type="text" class="form-control" id="ThoiGianLamLanh" name="ThoiGianLamLanh" required value="{{ $data->ThoiGianLamLanh }}" disabled>
+                <input type="number" class="form-control" id="ThoiGianLamLanh" name="ThoiGianLamLanh" required value="{{ $data->ThoiGianLamLanh }}" disabled>
                 @endif
               </div>
             </div>
@@ -52,11 +52,11 @@
               </div>
               <div class="col-sm-7">
                 @if($data == null)
-                <input type="text" class="form-control" id="Lactose" name="Lactose" required>
+                <input type="number" class="form-control" id="Lactose" name="Lactose" required>
                 @elseif($role == 'admin')
-                <input type="text" class="form-control" id="Lactose" name="Lactose" required value="{{ $data->Lactose }}">
+                <input type="number" class="form-control" id="Lactose" name="Lactose" required value="{{ $data->Lactose }}">
                 @else
-                <input type="text" class="form-control" id="Lactose" name="Lactose" required value="{{ $data->Lactose }}" disabled>
+                <input type="number" class="form-control" id="Lactose" name="Lactose" required value="{{ $data->Lactose }}" disabled>
                 @endif
               </div>
             </div>
@@ -66,11 +66,11 @@
               </div>
               <div class="col-sm-7">
                 @if($data == null)
-                <input type="text" class="form-control" id="NongDoChatBeo" name="NongDoChatBeo">
+                <input type="number" class="form-control" id="NongDoChatBeo" name="NongDoChatBeo">
                 @elseif($role == 'admin')
-                <input type="text" class="form-control" id="NongDoChatBeo" name="NongDoChatBeo" value="{{ $data->NongDoChatBeo }}">
+                <input type="number" class="form-control" id="NongDoChatBeo" name="NongDoChatBeo" value="{{ $data->NongDoChatBeo }}">
                 @else
-                <input type="text" class="form-control" id="NongDoChatBeo" name="NongDoChatBeo" value="{{ $data->NongDoChatBeo }}" disabled>
+                <input type="number" class="form-control" id="NongDoChatBeo" name="NongDoChatBeo" value="{{ $data->NongDoChatBeo }}" disabled>
                 @endif
               </div>
             </div>
@@ -80,11 +80,11 @@
               </div>
               <div class="col-sm-7">
                 @if($data == null)
-                <input type="text" class="form-control" id="NongDoChatKho" name="NongDoChatKho" required>
+                <input type="number" class="form-control" id="NongDoChatKho" name="NongDoChatKho" required>
                 @elseif($role == 'admin')
-                <input type="text" class="form-control" id="NongDoChatKho" name="NongDoChatKho" required value="{{ $data->NongDoChatKho }}">
+                <input type="number" class="form-control" id="NongDoChatKho" name="NongDoChatKho" required value="{{ $data->NongDoChatKho }}">
                 @else
-                <input type="text" class="form-control" id="NongDoChatKho" name="NongDoChatKho" required value="{{ $data->NongDoChatKho }}" disabled>
+                <input type="number" class="form-control" id="NongDoChatKho" name="NongDoChatKho" required value="{{ $data->NongDoChatKho }}" disabled>
                 @endif
               </div>
             </div>
