@@ -20,71 +20,71 @@
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-3">
-                <label for="lipid"><b>Hàm lượng chất béo:</b></label>
+                <label for="HamLuongChatBeo"><b>Hàm lượng chất béo:</b></label>
               </div>
               <div class="col-sm-7">
                 @if($data == null)
-                <input type="text" class="form-control" id="lipid" name="lipid" required value="">
+                <input type="text" class="form-control" id="HamLuongChatBeo" name="HamLuongChatBeo" required value="">
                 @elseif($role == 'admin')
-                <input type="text" class="form-control" id="lipid" name="lipid" required value="{{ $data->HamLuongChatBeo }}">
+                <input type="text" class="form-control" id="HamLuongChatBeo" name="HamLuongChatBeo" required value="{{ $data->HamLuongChatBeo }}">
                 @else
-                <input type="text" class="form-control" id="lipid" name="lipid" required value="{{ $data->HamLuongChatBeo }}" disabled>
+                <input type="text" class="form-control" id="HamLuongChatBeo" name="HamLuongChatBeo" required value="{{ $data->HamLuongChatBeo }}" disabled>
                 @endif
               </div>
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-3">
-                <label for="protein"><b>Hàm lượng protein:</b></label>
+                <label for="HamLuongProtein"><b>Hàm lượng protein:</b></label>
               </div>
               <div class="col-sm-7">
                 @if($data == null)
-                <input type="text" class="form-control" id="protein" name="protein" value="" required>
+                <input type="text" class="form-control" id="HamLuongProtein" name="HamLuongProtein" value="" required>
                 @elseif($role == 'admin')
-                <input type="text" class="form-control" id="protein" name="protein" value="{{ $data-> HamLuongProtein }}" required>
+                <input type="text" class="form-control" id="HamLuongProtein" name="HamLuongProtein" value="{{ $data-> HamLuongProtein }}" required>
                 @else
-                <input type="text" class="form-control" id="protein" name="protein" required value="{{ $data->HamLuongProtein }}" disabled>
+                <input type="text" class="form-control" id="HamLuongProtein" name="HamLuongProtein" required value="{{ $data->HamLuongProtein }}" disabled>
                 @endif
               </div>
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-3">
-                <label for="freezingTemperature"><b>Nhiệt độ đóng băng:</b></label>
+                <label for="NhietDoDongBang"><b>Nhiệt độ đóng băng:</b></label>
               </div>
               <div class="col-sm-7">
                 @if($data == null)
-                <input type="text" class="form-control" id="freezingTemperature" name="temperature" required value="">
+                <input type="text" class="form-control" id="NhietDoDongBang" name="NhietDoDongBang" required value="">
                 @elseif($role == 'admin')
-                <input type="text" class="form-control" id="freezingTemperature" name="temperature" required value="{{ $data->NhietDoDongBang }}">
+                <input type="text" class="form-control" id="NhietDoDongBang" name="NhietDoDongBang" required value="{{ $data->NhietDoDongBang }}">
                 @else
-                <input type="text" class="form-control" id="freezingTemperature" name="temperature" required value="{{ $data->NhietDoDongBang }}" disabled>
+                <input type="text" class="form-control" id="NhietDoDongBang" name="NhietDoDongBang" required value="{{ $data->NhietDoDongBang }}" disabled>
                 @endif
               </div>
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-3">
-                <label for="dryMatter"><b>Lượng chất khô:</b></label>
+                <label for="LuongChatKho"><b>Lượng chất khô:</b></label>
               </div>
               <div class="col-sm-7">
                 @if($data == null)
-                <input type="text" class="form-control" id="dryMatter" name="dryMatter" required value="">
+                <input type="text" class="form-control" id="LuongChatKho" name="LuongChatKho" required value="">
                 @elseif($role == 'admin')
-                <input type="text" class="form-control" id="dryMatter" name="dryMatter" required value="{{ $data->LuongChatKho }}">
+                <input type="text" class="form-control" id="LuongChatKho" name="LuongChatKho" required value="{{ $data->LuongChatKho }}">
                 @else
-                <input type="text" class="form-control" id="dryMatter" name="dryMatter" required value="{{ $data->LuongChatKho }}" disabled>
+                <input type="text" class="form-control" id="LuongChatKho" name="LuongChatKho" required value="{{ $data->LuongChatKho }}" disabled>
                 @endif
               </div>
             </div>
             <div class="form-group row">
               <div class="offset-sm-1 col-sm-3">
-                <label for="proportion"><b>Tỷ trọng:</b></label>
+                <label for="TyTrong"><b>Tỷ trọng:</b></label>
               </div>
               <div class="col-sm-7">
                 @if($data == null)
-                <input type="text" class="form-control" id="proportion" name="proportion" required value="">
+                <input type="text" class="form-control" id="TyTrong" name="TyTrong" required value="">
                 @elseif($role == 'admin')
-                <input type="text" class="form-control" id="proportion" name="proportion" required value="{{ $data->TyTrong }}">
+                <input type="text" class="form-control" id="TyTrong" name="TyTrong" required value="{{ $data->TyTrong }}">
                 @else
-                <input type="text" class="form-control" id="proportion" name="proportion" required value="{{ $data->TyTrong }}">
+                <input type="text" class="form-control" id="TyTrong" name="TyTrong" required value="{{ $data->TyTrong }}">
                 @endif
               </div>
             </div>
