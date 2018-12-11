@@ -15,8 +15,7 @@ class MyController extends Controller
 	}
 
 	public function index(){
-	    $isLogin = Session::get('isLogin');
-	   	return view('welcome', ['isLogin'=>$isLogin]);
+	    return redirect()->route('login');
 	}
 
 	public function sample_report($recordId){

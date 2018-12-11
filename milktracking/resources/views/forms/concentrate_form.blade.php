@@ -66,11 +66,11 @@
               </div>
               <div class="col-sm-7">
                 @if($data == null)
-                <input type="number" class="form-control" id="NongDoChatBeo" name="NongDoChatBeo">
+                <input type="number" class="form-control" id="NongDoChatBeo" name="NongDoChatBeo" required>
                 @elseif($role == 'admin')
-                <input type="number" class="form-control" id="NongDoChatBeo" name="NongDoChatBeo" value="{{ $data->NongDoChatBeo }}">
+                <input type="number" class="form-control" id="NongDoChatBeo" name="NongDoChatBeo" required value="{{ $data->NongDoChatBeo }}">
                 @else
-                <input type="number" class="form-control" id="NongDoChatBeo" name="NongDoChatBeo" value="{{ $data->NongDoChatBeo }}" disabled>
+                <input type="number" class="form-control" id="NongDoChatBeo" name="NongDoChatBeo" required value="{{ $data->NongDoChatBeo }}" disabled>
                 @endif
               </div>
             </div>
