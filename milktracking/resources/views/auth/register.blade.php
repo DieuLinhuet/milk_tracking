@@ -26,10 +26,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="userName" class="col-md-4 col-form-label text-md-right">{{ __('Tên đăng nhập') }}</label>
+                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Tên đăng nhập') }}</label>
 
                             <div class="col-md-6">
-                                <input id="userName" type="text" class="form-control" name="userName" value="" required>
+                                <input id="username" type="text" class="form-control" name="username" value="" required>
                             </div>
                         </div>
 
@@ -65,10 +65,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="privateKey" class="col-md-4 col-form-label text-md-right">{{ __('Private Key') }}</label>
+                            <label for="privkey" class="col-md-4 col-form-label text-md-right">{{ __('Private Key') }}</label>
 
                             <div class="col-md-6">
-                                <input id="privateKey" type="text" class="form-control" name="privateKey" value="" required>
+                                <input id="privkey" type="text" class="form-control" name="privkey" value="" required>
                             </div>
                         </div>
 

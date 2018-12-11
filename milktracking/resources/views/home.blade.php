@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -57,6 +57,9 @@
                           <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '1']) }}">Cập nhật</a>
                         </td>
                         <td>
+                          <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '1']) }}">Cập nhật</a>
+                        </td>
+                        <td>
                           <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '2']) }}">Cập nhật</a>
                         </td>
                         <td>
@@ -69,17 +72,17 @@
                           <a href="{{ route('putRecord', ['recordId' => $sample->_id, 'phase' => '5']) }}">Cập nhật</a>
                         </td>
                         <td>{{ count($sample->signatures) }}</td>
-                        <td>@if(!$sample->isAproved) Chưa được xác nhận
+                        <td>@if(!$sample->isApproved) Chưa được xác nhận
                             @else Đã xác nhận
                             @endif</td>
                         <td>
                           <?php $signed = 0 ?>
                           @foreach($sample->signatures as $user)
-                            @if($userName == $user->username) Đã ký 
+                            @if($userName == $user->username) Đã ký
                             <?php $signed = 1 ?>
                             @endif
                           @endforeach
-                          @if($signed == 0) 
+                          @if($signed == 0)
                           <a href="{{ route('sign',['recordId'=>$sample->_id]) }}"> Ký ngay </a>
                           @endif
                         </td>

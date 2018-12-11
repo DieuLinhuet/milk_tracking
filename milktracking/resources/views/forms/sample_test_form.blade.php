@@ -22,7 +22,11 @@
                 <label for="lipid"><b>Hàm lượng chất béo:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="lipid" name="lipid" required>
+                @if($role == 'admin')
+                <input type="text" class="form-control" id="lipid" name="lipid" required value="{{ $data->HamLuongChatBeo }}">
+                @else
+                <input type="text" class="form-control" id="lipid" name="lipid" required value="{{ $data->HamLuongChatBeo }}" disabled>
+                @endif
               </div>
             </div>
             <div class="form-group row">
@@ -30,7 +34,11 @@
                 <label for="protein"><b>Hàm lượng protein:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="protein" name="protein" required>
+                @if($role == 'admin')
+                <input type="text" class="form-control" id="protein" name="protein" value="{{ $data-> HamLuongProtein }}" required>
+                @else
+                <input type="text" class="form-control" id="protein" name="protein" required value="{{ $data->HamLuongProtein }}" disabled>
+                @endif
               </div>
             </div>
             <div class="form-group row">
@@ -38,7 +46,11 @@
                 <label for="freezingTemperature"><b>Nhiệt độ đóng băng:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="freezingTemperature" name="temperature" required>
+                @if($role == 'admin')
+                <input type="text" class="form-control" id="freezingTemperature" name="temperature" required value="{{ $data->NhietDoDongBang }}">
+                @else
+                <input type="text" class="form-control" id="freezingTemperature" name="temperature" required value="{{ $data->NhietDoDongBang }}" disabled>
+                @endif
               </div>
             </div>
             <div class="form-group row">
@@ -46,7 +58,11 @@
                 <label for="dryMatter"><b>Lượng chất khô:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="dryMatter" name="dryMatter" required>
+                @if($role == 'admin')
+                <input type="text" class="form-control" id="dryMatter" name="dryMatter" required value="{{ $data->LuongChatKho }}">
+                @else
+                <input type="text" class="form-control" id="dryMatter" name="dryMatter" required value="{{ $data->LuongChatKho }}" disabled>
+                @endif
               </div>
             </div>
             <div class="form-group row">
@@ -54,7 +70,11 @@
                 <label for="proportion"><b>Tỷ trọng:</b></label>
               </div>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="proportion" name="proportion" required>
+                @if($role == 'admin')
+                <input type="text" class="form-control" id="proportion" name="proportion" required value="{{ $data->TyTrong }}">
+                @else
+                <input type="text" class="form-control" id="proportion" name="proportion" required value="{{ $data->TyTrong }}">
+                @endif
               </div>
             </div>
             <div class="form-group">
