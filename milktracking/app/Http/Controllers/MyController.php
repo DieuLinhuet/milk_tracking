@@ -19,7 +19,7 @@ class MyController extends Controller
 	}
 
 	public function sample_report($recordId){
-		$response = $this->client->request('GET', '/api/v1/records/'.$recordId);
+		$response = $this->client->request('GET', '/api/v1/records/'.$recordId, ['http_errors' => false]);
 
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
@@ -27,6 +27,7 @@ class MyController extends Controller
 		    	$sample = $r->payload;
 		    }
 		} else {
+			Session::flash('danger', 'Có lỗi xảy ra. Vui lòng thử lại');
 			return back();
 		}
 	    return view('sample_report', ['sample'=> $sample]);
@@ -35,25 +36,27 @@ class MyController extends Controller
 	public function newRecord(){
 		$id = Session::get('id');
 		$input = array();
-		$input['title'] = 'vinamilk';
 		$input['note'] = 'vinamilk';
+		$input['title'] = 'vinamilk';
 		$data = json_encode($input);
 		$response = $this->client->request('POST', '/api/v1/records/'.$id, [
 	    	'headers'=>[
 	    		//'Accept' => 'application/json',
 	    		'Content-Type' => 'application/json'
 	   		 ],
-	    	'body' => $data
+	    	'body' => $data,
+	    	'http_errors' => false
 	    ]);
 
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
-					// dd($r);
+				Session::flash('success', 'Thêm mẫu thành công');
 		    	return redirect()->route('putRecord',['recordId'=>$r->payload->_id, 'phase'=>'1']);
 		    }
 		} else {
-			return back();
+			Session::flash('danger', 'Máy chủ bận. Vui lòng thử lại.');
+			return redirect()->route('home');
 		}
 	}
 
@@ -77,7 +80,8 @@ class MyController extends Controller
 	    		//'Accept' => 'application/json',
 	    		'Content-Type' => 'application/json'
 	   		 ],
-	    	'body' => $data
+	    	'body' => $data,
+	    	'http_errors' => false
 	    ]);
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
@@ -87,14 +91,16 @@ class MyController extends Controller
 					// Session::put('userName', $r->payload->username);
 		    	// Session::put('role', $r->payload->role);
 		    	// return redirect()->route('home');
-					echo "<script type='text/javascript'> alert('Đã thêm một tài khoản mới.');</script>";
+				Session::flash('success', 'Thêm thành công');
+				return redirect()->route('register');
 		    } else {
-					echo "<script type='text/javascript'> alert('Không thành công, vui lòng thử lại!');</script>";
+				Session::flash('danger', 'Thêm không thành công');
+				return redirect()->route('register');
 		    }
-		}else {
-			echo "<script type='text/javascript'> alert('Rất tiếc đã xảy ra lỗi.');</script>";
+		} else {
+			Session::flash('danger', 'Máy chủ bận. Vui lòng thử lại.');
+			return redirect()->route('register');
 		}
-		return back();
 	}
 
 	public function gLogin(Request $rq){
@@ -102,22 +108,26 @@ class MyController extends Controller
 	}
 
 	public function login(Request $rq){
-		$response = $this->client->request('GET', 'api/v1/actors/auth?username='.$rq->username.'&password='.$rq->password);
-		// $response = $this->client->request('GET', 'api/v1/login');
+		$response = $this->client->request('GET', 'api/v1/actors/auth?username='.$rq->username.'&password='.$rq->password, ['http_errors' => false]);
 	    if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 
 		    if($r->success){
 		    	Session::put('isLogin', true);
 		    	Session::put('id', $r->payload->_id);
-					Session::put('userName', $r->payload->username);
+				Session::put('userName', $r->payload->username);
 		    	Session::put('role', $r->payload->role);
 		    	return redirect()->route('home');
 		    }else {
-		    	return back();
+		    	Session::flash('danger', 'Đăng nhập không thành công');
+		    	return redirect()->route('login');
 		    }
+		} else if($response->getStatusCode() == 404) {
+			Session::flash('danger', 'Đăng nhập không thành công');
+			return redirect()->route('login');
 		} else {
-			return back();
+			Session::flash('danger', 'Máy chủ bận. Vui lòng thử lại.');
+			return redirect()->route('login');
 		}
 	}
 
@@ -132,7 +142,7 @@ class MyController extends Controller
 		$userName = Session::get('userName');
 		$isLogin = Session::get('isLogin');
 		$role = Session::get('role');
-		$response = $this->client->request('GET', '/api/v1/records/'.$recordId);
+		$response = $this->client->request('GET', '/api/v1/records/'.$recordId,['http_errors' => false]);
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
@@ -156,7 +166,8 @@ class MyController extends Controller
 					'sample'=>$r->payload, 'recordId'=>$recordId,'phase'=> $phase, 'data'=> $data]);
 		    }
 		} else {
-			return back();
+			Session::flash('danger', 'Có lỗi xảy ra, vui lòng thử lại');
+			return redirect()->route('putRecord', ['recordID' => $recordId, 'phase' => $phase]);
 		}
 
 	}
@@ -180,19 +191,23 @@ class MyController extends Controller
 	    		//'Accept' => 'application/json',
 	    		'Content-Type' => 'application/json'
 	   		 ],
-	    	'body' => $data
+	    	'body' => $data,
+	    	'http_errors' => false
 	    ]);
 
 	    if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
 		    	if($phase < 5){
+		    		Session::flash('success', 'Cập nhật thành công');
 		    		return redirect()->route('putRecord', ['recordId'=>$recordId, 'phase'=>$phase+1]);
 		    	} else {
+		    		Session::flash('success', 'Cập nhật thành công. Hoàn thành mẫu');
 		    		return redirect()->route('home');
 		    	}
 		    }
 		} else {
+			Session::flash('danger', 'Cập nhật không thành công. Vui lòng thử lại.');
 			return back();
 		}
 	}
@@ -208,33 +223,43 @@ class MyController extends Controller
 	    	'headers'=>[
 	    		//'Accept' => 'application/json',
 	    		'Content-Type' => 'application/json'
-	   		 ]
+	   		 ],
+	   		 'http_errors' => false
 	    ]);
 
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
-		    	return back();
+		    	Session::flash('success', 'Ký thành công');
+		    	return redirect()->route('home');
 		    } else {
-		    	echo "<script type='text/javascript'> alert('Ký không thành công. Vui lòng thử lại.');</script>";
-		    	return back();
+		    	Session::flash('danger', 'Ký không thành công. vui lòng thử lại.');
+		    	return redirect()->route('home');
 		    }
 		}
 	}
 
 	public function home(){
-		$response = $this->client->request('GET', '/api/v1/records');
+		$response = $this->client->request('GET', '/api/v1/records', ['http_errors' => false]);
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
 		    	$samples = $r->payload;
+		    } else {
+		    	Session::flash('danger', 'Có lỗi xảy ra. Vui lòng thử lại.');
+		    	return redirect()->route('home');
 		    }
+		} else if($response->getStatusCode() == 404){
+			Session::flash('danger', 'Có lỗi xảy ra. Vui lòng thử lại.');
+			return redirect()->route('home');
 		} else {
-			return back();
+			Session::flash('danger', 'Máy chủ bận. Vui lòng thử lại.');
+		    return redirect()->route('home');
 		}
 		$userName = Session::get('userName');
 		$isLogin = Session::get('isLogin');
-		return view('home', ['userName'=>$userName, 'isLogin'=>$isLogin, 'samples'=>$samples]);
+		$role = Session::get('role');
+		return view('home', ['userName'=>$userName, 'isLogin'=>$isLogin, 'samples'=>$samples, 'role' => $role]);
 	}
 
 }

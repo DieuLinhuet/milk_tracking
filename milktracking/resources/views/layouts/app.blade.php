@@ -22,6 +22,13 @@
 </head>
 <body>
     <div id="app">
+      @foreach (['danger', 'success'] as $key)
+       @if(Session::has($key))
+          <p id="alert" class="alert alert-{{ $key }}" display:none>{{ Session::get($key) }}</p>
+          <script type='text/javascript'> setTimeout(function(){ document.getElementById("alert").style.display = 'none'; }, 3000);
+          </script>
+       @endif
+      @endforeach
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">

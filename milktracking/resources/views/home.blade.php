@@ -106,6 +106,7 @@
                             @endif
                           </td>
                         <td>
+                          @if($role == 'admin')
                           <?php $signed = 0 ?>
                           @foreach($sample->signatures as $user)
                             @if($userName == $user->username) Đã ký
@@ -119,6 +120,8 @@
                             <a href="{{ route('sign',['recordId'=>$sample->_id]) }}" onClick= "return confirm('Bạn có chắc muốn ký?')"> Ký ngay </a>
                             @else Ký ngay
                             @endif 
+                          @endif
+                          @else Bạn không đủ quyền
                           @endif
                         </td>
                       </tr>
