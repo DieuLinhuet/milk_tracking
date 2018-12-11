@@ -49,7 +49,11 @@ class MyController extends Controller
 	}
 
 	public function gRegister(Request $rq){
-	    return view('auth.register',['userName'=>'', 'isLogin'=>0]);
+		// dd(Session::get('isLogin'));
+		$userName = Session::get('userName');
+		$isLogin = Session::get('isLogin');
+		return view('auth.register', ['userName' => $userName, 'isLogin' => $isLogin]);
+    // return view('auth.register',['userName'=>'', 'isLogin'=>true]);
 	}
 	public function register(Request $rq){
 	    $response = $this->client->request('POST', '/api/v1/actors/register', [
@@ -58,17 +62,19 @@ class MyController extends Controller
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 			if($r->success){
-		    	Session::put('isLogin', true);
-		    	Session::put('id', $r->payload->_id);
-					Session::put('userName', $r->payload->username);
-		    	Session::put('role', $r->payload->role);
-		    	return redirect()->route('home');
+		    	// Session::put('isLogin', true);
+		    	// Session::put('id', $r->payload->_id);
+					// Session::put('userName', $r->payload->username);
+		    	// Session::put('role', $r->payload->role);
+		    	// return redirect()->route('home');
+					echo "<script type='text/javascript'> alert('Đã thêm một tài khoản mới.');</script>";
 		    } else {
-		    	return back();
+					echo "<script type='text/javascript'> alert('Không thành công, vui lòng thử lại!');</script>";
 		    }
 		}else {
-			return back();
+			echo "<script type='text/javascript'> alert('Rất tiếc đã xảy ra lỗi.');</script>";
 		}
+		return back();
 	}
 
 	public function gLogin(Request $rq){
@@ -84,7 +90,7 @@ class MyController extends Controller
 		    if($r->success){
 		    	Session::put('isLogin', true);
 		    	Session::put('id', $r->payload->_id);
-				Session::put('userName', $r->payload->username);
+					Session::put('userName', $r->payload->username);
 		    	Session::put('role', $r->payload->role);
 		    	return redirect()->route('home');
 		    }else {
