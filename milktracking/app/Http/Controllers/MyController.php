@@ -24,7 +24,7 @@ class MyController extends Controller
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
-		    	if($r->payload->isApproved)
+		    	if(!is_null($r->payload) && $r->payload->isApproved)
 		    		$sample = $r->payload;
 		    	else 
 		    		$sample = null;
