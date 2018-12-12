@@ -84,7 +84,7 @@
                 @elseif($role == 'admin')
                 <input type="number" class="form-control" id="TyTrong" name="TyTrong" required value="{{ $data->TyTrong }}">
                 @else
-                <input type="number" class="form-control" id="TyTrong" name="TyTrong" required value="{{ $data->TyTrong }}">
+                <input type="number" class="form-control" id="TyTrong" name="TyTrong" required value="{{ $data->TyTrong }}" disabled>
                 @endif
               </div>
             </div>
