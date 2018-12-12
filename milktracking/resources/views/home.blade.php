@@ -88,9 +88,15 @@
                         </td>
                         <td>{{ count($sample->signatures) }}</td>
                         <td>@if(!$sample->isApproved) Chưa được xác nhận
-                            @else
-                          <a href="{{route('sample_report',['recordId' => $sample->_id])}}">
-                           <img src="https://chart.googleapis.com/chart?cht=qr&chs=120x120&chld=|0&chl={{ route('sample_report',['recordId' => $sample->_id]) }}">
+                            @else 
+                            <?php 
+                              $param = $sample->_id;
+                              foreach($sample->signatures as $key => $value){
+                                $param = $param.substr($value->_id,21,3);
+                              }
+                            ?>
+                          <a href="{{route('sample_report',['param' => $param])}}">
+                           <img src="https://chart.googleapis.com/chart?cht=qr&chs=120x120&chld=|0&chl={{ route('sample_report',['param' => $param]) }}">
                           </a>
                             @endif
                           </td>

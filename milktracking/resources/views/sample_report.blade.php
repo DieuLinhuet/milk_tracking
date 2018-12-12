@@ -49,9 +49,12 @@
           <div class="container">
               <div class="row justify-content-center">
                 <img src="/images/sua-vinamilk-header.jpg" alt="header">
-                @if(is_null($sample))
+                @if($sample->isFake)
+                  <h1 class="alert alert-danger"> Thông tin bạn truy cập không có trên hệ thống. Vui lòng xác minh nguồn gốc sản phẩm. </h1>
+                @elseif(!$sample->isApproved)
                   <h1 class="alert alert-danger"> Thông tin bạn truy cập chưa được kiểm duyệt. Vui lòng liên hệ nhà sản xuất để biết thêm chi tiết. </h1>
                 @else
+                <?php $sample = $sample->payload?>
                 <h1>Thông tin sữa tại nhà máy</h1>
                 <div class="col-sm-10 row">
                   <div class="col-sm-6">

@@ -18,16 +18,32 @@ class MyController extends Controller
 	    return redirect()->route('login');
 	}
 
-	public function sample_report($recordId){
+	public function sample_report($param){
+		$recordId = substr($param,0,24);
+		$actorIds[0] = substr($param,24,3);
+		$actorIds[1] = substr($param,27,3);
+		$actorIds[2] = substr($param,30,3);
 		$response = $this->client->request('GET', '/api/v1/records/'.$recordId, ['http_errors' => false]);
-
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
-		    if($r->success){
-		    	if(!is_null($r->payload) && $r->payload->isApproved)
-		    		$sample = $r->payload;
-		    	else 
-		    		$sample = null;
+			$sample = new \stdClass();
+		    if($r->success && !is_null($r->payload)){
+		    		$data = $r->payload;
+		    		$sample->isFake = false;
+		    		if($data->isApproved){
+			    		$sample->isApproved = true;
+			    		$sample->payload = null;
+			    		foreach($data->signatures as $key => $value){
+			    			if($actorIds[$key] != substr($value->_id,21,3)){
+			    				$sample->isFake = true;
+			    			}
+			    		}
+	    				if(!$sample->isFake) $sample->payload = $data;
+			    	} else {
+			    		$sample->isApproved = false;
+			    	}
+		    } else {
+		    	$sample->isFake = true; 
 		    }
 		} else {
 			Session::flash('danger', 'Có lỗi xảy ra. Vui lòng thử lại');

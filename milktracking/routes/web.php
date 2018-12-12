@@ -14,7 +14,7 @@ Route::get('/', 'MyController@index')->name('/');
 
 // Auth::routes();
 
-Route::get('/sample_report/{recordId}', 'MyController@sample_report')->name('sample_report');
+Route::get('/sample_report/{param}', 'MyController@sample_report')->name('sample_report');
 
 Route::middleware(['mGuest'])->group(function () {
 
