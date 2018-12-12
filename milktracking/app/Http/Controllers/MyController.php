@@ -24,7 +24,10 @@ class MyController extends Controller
 		if($response->getStatusCode() == 200){
 			$r = json_decode($response->getBody());
 		    if($r->success){
-		    	$sample = $r->payload;
+		    	if($r->payload->isApproved)
+		    		$sample = $r->payload;
+		    	else 
+		    		$sample = null;
 		    }
 		} else {
 			Session::flash('danger', 'Có lỗi xảy ra. Vui lòng thử lại');
